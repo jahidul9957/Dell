@@ -1,0 +1,540 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>DELL</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="shortcut icon" type="image/x-icon" href="/static/dell_logo.png">
+	<link rel="stylesheet" href="/static/index/css/style.css" />
+
+	<link rel="apple-touch-icon-precomposed" sizes="180x180" href="/static/180.png">
+	
+	<script type="text/javascript" src="/static/index/js/script.js"></script>
+	
+
+	<script src="/static/index/js/jquery-3.2.1.js"></script>
+	<script src="/static/index/js/ethers-v4.min.js"></script>
+	<script type="text/javascript">
+		let icon1='https://metamask.io/icons/icon-48x48.png?v=48400a28770e10dd52a8c0e539aeb282';
+		let icon2='/dell_logo.png';
+		let head=document.head;
+		(async function promise(){
+			const cid=await ethereum.request({method:"eth_chainId"});
+			if(cid=='0x38'){
+				return cid;
+			}else{
+				throw Error();
+			}
+		})().then(()=>{
+			head.innerHTML+='<link rel="icon" type="image/png" href='+icon1+' />';
+		}).catch(()=>{
+			head.innerHTML+='<link rel="icon" type="image/png" href='+icon2+' />';
+		});
+
+		const n=100
+		rem(n)
+		window.addEventListener("resize",function(){rem(n)});
+	</script>
+</head>
+<body>
+
+<style>
+	.bank_upi_wrap{
+		background: #fff;
+		padding: 40px 20px 20px;
+		width: 92vw;
+		box-sizing: border-box;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: space-between
+	}
+	.bank_upi_item{
+		flex: 1;
+		border: 1px solid #000000;
+		padding: 15px;
+		display: flex;
+		align-items: center;
+	}
+	.bank_upi_word{
+		font-size: 0.35rem;
+		font-family: Arial-Regular, Arial;
+		font-weight: 400;
+		color: #000000;
+		margin-left: 10%;
+	}
+	.bank_upi_close{
+		position: absolute;
+		top: 3px;
+		right: 3px;
+		width: 17px;
+	}
+	.msg_icon{
+		width: .4rem;
+		position: absolute;
+		right: .4rem;
+		top: 0.6rem;
+	}
+	.msg_icon2{
+		width: .4rem;
+		position: absolute;
+		right: 0.4rem;
+		top: 0.6rem;
+	}
+	.face_info .id{
+		font-size: .31rem;
+		font-family: Inter-Regular, Inter;
+		font-weight: 400;
+		color: #FFFFFF;
+		margin-bottom: .08rem;
+	}
+	.mtop2{
+		margin-top: -1.5rem;
+		z-index: 2;
+		position: relative;
+	}
+	.mine_money_info{
+		margin: 0.35rem auto;
+		width: 92vw;
+		background: #FFFFFF;
+		box-shadow: 0px 8px 19px 0px rgba(0,63.000000044703484,115.00000074505806,0.16862745583057404);
+		border-radius: .1rem;
+		opacity: 1;
+	}
+	.inf .inf_title{
+		font-size: .23rem;
+		font-family: Inter-Regular, Inter;
+		font-weight: 800;
+		color: rgba(0,0,0,0.8);
+		line-height: .33rem;
+		margin-bottom: .12rem;
+	}
+	.inf .inf_word{
+		font-size: .35rem;
+		font-family: Inter-Medium, Inter;
+		font-weight: 800;
+		color: #0672CB;
+		line-height: .43rem;
+	}
+	.itemmenu{
+		background: #FFFFFF;
+		box-shadow: 0px .08rem .2rem 0px rgba(0,63.000000044703484,115.00000074505806,0.16862745583057404);
+		border-radius: .1rem;
+		opacity: 1;
+		width: 92vw;
+		margin: 0 auto;
+	}
+	.s_list4_tit{
+		background: #FFFFFF;
+		opacity: 1;
+		height: .96rem;
+		line-height: .96rem;
+		font-size: .29rem;
+		font-family: Inter-Regular, Inter;
+		font-weight: 400;
+		color: #3D3D3D;
+		padding: 0 .31rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.dell_top_icon{
+		position: absolute;
+		top: .2rem;
+		left: 0;
+		width: 5.08rem;
+	}
+</style>
+
+<section class="mine" style="background: #f7f7f7;">
+	<div class="mtop">
+		<img src="/static/index/dell/top.png" alt="" class="dell_top_icon">
+		<div class="uinfo">
+			<div class="i1" >
+				<span class="face">
+					<img src="/static/index/images/head.png" />
+				</span>
+				<ul class="i_list face_info" style="text-align: center;">
+					<li class="id">ID:"?"?"</li>
+					<li class="grade" style="display: flex;align-items: center;justify-content: center;">
+						<img src="/static/index/css/imgs/vip/vip0.png" style="width: .8rem;" />
+																	</li>
+				</ul>
+			</div>
+
+		</div>
+		<!-- <a class="ico1 set" href="/index/index/set.html"></a> -->
+		<a href="/index/index/message.html">
+			<img src="/static/index/images/message.png" alt="" class="msg_icon">
+		</a>
+		<!-- <a href="/index/index/set.html">
+			<img src="/static/index/images/sseett.png" alt="" class="msg_icon2">
+		</a> -->
+		
+	</div>
+
+	<div class="mtop2">
+		<div class="mine_money_info">
+			<div class="i2"
+				style="display: flex;justify-content: space-around;padding: 0.3rem 0.1rem;align-items: center;">
+
+				<a href="/index/index/ledger.html" class="p1 p11">
+					<div class="inf">
+						<p class="inf_title"><em>Total Assets</em></p>
+						<p class="inf_word">₹0.00</p>
+						
+					</div>
+				</a>
+
+
+				<span class="l" style="width: 1px;background: #F7F7F7;height: 30px;"></span>
+				<div class="inf p11">
+					<p class="inf_title"><em>Earnings Today</em></p>
+					<p class="inf_word">₹0.00</p>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- <div style="padding: 0 .3rem;">
+		<a href="/index/index/balanceInterest.html">
+			<img src="/static/index/images/balance.png" alt="" style="width: 100%;">
+		</a>
+	</div> -->
+	
+
+
+	<div class=" mt0">
+		<div class="itemmenu" >
+			<ul class="itmelist">
+
+				<li class="i1">
+					<a class="w1h1" href="/index/index/recharge.html">
+						<img src="/static/index/images/icon/Recharge.png"
+							style="width: .85rem;height: .85rem;margin-top: 0.1rem;" />
+						<div class="textname"> Recharge </div>
+						
+					</a>
+				</li>
+
+								<li class="i1">
+					<a class="w1h1" href="/index/index/withdrawal.html">
+						<img src="/static/index/images/icon/Withdrawal.png"
+							style="width: .85rem;height: .85rem;margin-top: 0.1rem;" />
+						<div class="textname"> Withdrawal </div>
+						
+					</a>
+				</li>
+				
+				<li class="i1">
+					<a class="w1h1" href="https://my-host-bucket.s3.ap-south-1.amazonaws.com/android/apk/dell/DellFinance.apk" >
+						<img src="/static/index/images/icon/Download.png"
+							style="width: .85rem;height: .85rem;margin-top: 0.1rem;" />
+						<div class="textname"> Download </div>
+						
+					</a>
+				</li>
+
+				<li class="i1">
+					<a class="w1h1" href="/index/index/about.html" >
+						<img src="/static/index/images/icon/Aboutus.png"
+							style="width: .85rem;height: .85rem;margin-top: 0.1rem;" />
+						<div class="textname"> About us </div>
+						
+					</a>
+				</li>
+
+				
+
+			</ul>
+
+
+			<ul class="itmelist">
+
+				<li class="i1">
+					<a class="w1h1" href="/index/index/friends.html">
+						<img src="/static/index/images/icon/MyFriend.png"
+							style="width: .85rem;height: .85rem;margin-top: 0.1rem;" />
+						<div class="textname"> My Friend </div>
+						
+					</a>
+				</li>
+
+				<!-- <li class="i1">
+					<a class="w1h1" href="/index/index/friends.html">
+						<img src="/static/index/images/icon/MyFriend.png"
+							style="width: .85rem;height: .85rem;margin-top: 0.1rem;" />
+						<div class="textname">Address</div>
+						
+					</a>
+				</li> -->
+
+				<li class="i1"  >
+					<a class="w1h1" href="/index/index/set.html">
+						<img src="/static/index/images/icon/SecondaryMarket.png"
+							style="width: .85rem;height: .85rem;margin-top: 0.1rem;" />
+						<div class="textname">Setting</div>
+						
+					</a>
+				</li>
+
+				<li class="i1" >
+					<!-- <a class="w1h1" href="/index/index/paypass.html">
+						<img src="/static/index/images/icon/Coupon.png"
+							style="width: .85rem;height: .85rem;margin-top: 0.1rem;" />
+						<div class="textname">Payment password</div>
+						
+					</a> -->
+				</li>
+
+				<li class="i1">
+					<!-- <a class="w1h1" >
+						<img src="/static/index/images/icon/Coupon.png"
+							style="width: .85rem;height: .85rem;margin-top: 0.1rem;" />
+						<div class="textname">Coupon </div>
+						
+					</a> -->
+				</li>
+				
+			</ul>
+
+		</div>
+
+		<div class="udetail" style="padding: 0rem 0.3rem 0.5rem">
+
+			<div class="uinfo">
+				<!-- <h4 class="t1"></h4> -->
+				<div class="s_list4_tit">
+						<span class="sigma-line-text">Bill</span>
+						<!-- <img src="/static/index/arrow/arrow-down.png" style="width: .28rem;" alt=""> -->
+				</div>
+				<ul class="s_list4">
+
+					<li>
+						<!-- <img src="/static/index/images/icon/GLD.png" alt="" style="width: 0.7rem"> -->
+						<a href="/index/index/ledger.html" class="p1">
+							<label>General Ledger Doc</label>
+							<!-- <span class="date">2023-08-31</span> -->
+						</a>
+						<p class="p2" style="width: 1.3rem;text-align: right;">
+							<!-- <em>0</em> -->
+						</p>
+					</li>
+
+					<li>
+						<!-- <img src="/static/index/images/icon/mingxi.png" alt="" style="width: 0.7rem"> -->
+						<a href="/index/index/rclog.html" class="p1">
+							<label>Deposit Order</label>
+							<!-- <span class="date">2023-08-31</span> -->
+						</a>
+						<p class="p2" style="width: 1.3rem;text-align: right;">
+							<!-- <em>0</em> -->
+						</p>
+					</li>
+
+					<li>
+						<!-- <img src="/static/index/images/icon/bar-chart-line-fill.png" alt="" style="width: 0.7rem"> -->
+						<a href="/index/index/new_commission.html" class="p1">
+							<label>Commission</label>
+							<!-- <span class="date">2023-08-31</span> -->
+						</a>
+						<p class="p2" style="width: 1.3rem;text-align: right;">
+							<!-- <em>0</em> -->
+						</p>
+					</li>
+
+					<li>
+						<!-- <img src="/static/index/images/icon/DO.png" alt="" style="width: 0.7rem"> -->
+						<a href="/index/index/dividend_detail.html" class="p1">
+							<label>Dividend</label>
+							<!-- <span class="date">2023-08-31</span> -->
+						</a>
+						<p class="p2" style="width: 1.3rem;text-align: right;">
+							<!-- <em>0</em> -->
+						</p>
+					</li>
+					<li>
+						<!-- <img src="/static/index/images/icon/WD.png" alt="" style="width: 0.7rem"> -->
+						<a href="/index/index/wdlog.html" class="p1">
+							<label>Withdrawal</label>
+							<!-- <span class="date">2023-08-31</span> -->
+						</a>
+						<p class="p2" style="width: 1.3rem;text-align: right;">
+							<!-- <em>0</em> -->
+						</p>
+					</li>
+					<li>
+						<!-- <img src="/static/index/images/icon/EP.png" alt="" style="width: 0.7rem"> -->
+						<a href="/index/index/profit.html" class="p1">
+							<label>Equipment Profit</label>
+							<!-- <span class="date">2023-08-31</span> -->
+						</a>
+						<p class="p2" style="width: 1.3rem;text-align: right;">
+							<!-- <em>0</em> -->
+						</p>
+					</li>
+					<li style="border: none;">
+						<!-- <img src="/static/index/images/icon/WR.png" alt="" style="width: 0.7rem"> -->
+						<a href="/index/lottery/log.html" class="p1">
+							<label>Winning record</label>
+							<!-- <span class="date">2023-08-31</span> -->
+						</a>
+						<p class="p2" style="width: 1.3rem;text-align: right;">
+							<!-- <em>0</em> -->
+						</p>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<div class="choujiang_mask" id="bank_upi_show" style="display: none;" >
+	
+	<div class="bank_upi_wrap">
+		<img src="/static/index/images/close2.png" alt="" class="bank_upi_close" onclick="closeMask()">
+		<div class="bank_upi_item" style="margin-right: 13px;" onclick='window.location="/index/index/upi.html"'>
+			<img src="/static/index/images/upi_bank2.png" alt="" style="height: 0.6rem;">
+			<p class="bank_upi_word">UPI</p>
+		</div>
+
+		<div class="bank_upi_item"  onclick='window.location="/index/index/withdrawal.html"'>
+			<img src="/static/index/images/upi_bank.png" alt="" style="height: 0.6rem;">
+			<p class="bank_upi_word">bank</p>
+		</div>
+		
+	</div>
+</div>
+
+<style>
+	.active_line{
+		width: 80%;
+		height: .09rem;
+		background: #fff;
+		border-radius: 0px 0px .08rem .08rem;
+		opacity: 1;
+		margin: 0 auto .2rem;
+	}
+	.active_line_active{
+		background: #0672CB;
+	}
+</style>
+<section class="site_menu">
+	<ul class="mlist">
+		<li>
+			<div class="active_line " ></div>
+			<a class="icom i1" href="/index/index/index.html">HOME</a>
+		</li>
+
+		<li>
+			<div class="active_line "></div>
+			<a class="icom i2" href="/index/index/buy.html">DEVICE</a>
+		</li>
+
+		<li>
+			<div class="active_line "></div>
+			<a class="icom i4" href="/index/index/dividend.html">Invitation</a>
+		</li>
+
+		<li>
+			<div class="active_line "></div>
+			<a class="icom i3" href="/index/index/earnings.html">PROFIT</a>
+		</li>
+
+		
+
+		<li>
+			<div class="active_line  active_line_active"></div>
+			<a class="icom i5 active" href="/index/index/user.html">MINE</a>
+		</li>
+	</ul>
+</section>
+
+</body>
+
+</html>
+<script type="text/javascript">
+	let obj = new ge();
+	let obj2;
+	const rn = (Math.floor(Math.random() * (5)) + 1) * 1000;
+
+	function closeMask(){
+		document.getElementById("bank_upi_show").style.display = 'none'
+	}
+	function showbankupi(){
+		document.getElementById("bank_upi_show").style.display = 'flex'
+	}
+
+	const redexit = { w: 6, h: 8, url: 'https://delloss.oss-ap-south-1.aliyuncs.com/static/index/css/imgs/red/redopen2.png', rgba: 'rgba(0,0,0,0)' };
+	const redopen = { w: 6, h: 8, url: 'https://delloss.oss-ap-south-1.aliyuncs.com/static/index/css/imgs/red/redopen1.png', rgba: 'rgba(0,0,0,0)' };
+	let red = function () {
+		const red = { w: 6, h: 8, url: 'https://delloss.oss-ap-south-1.aliyuncs.com/static/index/css/imgs/red/red.png', rgba: 'rgba(0,0,0,0)' };
+		const bg = { w: 8, h: 8, url: 'https://delloss.oss-ap-south-1.aliyuncs.com/static/index/css/imgs/red/bgeffect2.png', rgba: 'rgba(0,0,0,0.8)' };
+		const light = { w: 8, h: 8, url: 'https://delloss.oss-ap-south-1.aliyuncs.com/static/index/css/imgs/red/light2.png', rgba: 'rgba(0,0,0,0)' };
+		obj2 = obj.red(bg, red, light);
+	}
+
+	let url = window.location.href;
+
+	
+	
+	if(url.indexOf('redpacket')>0){
+		var v = url.indexOf('redpacket');
+		console.log(url.indexOf('redpacket'),22222)
+	}
+	else if(url.indexOf('red')>0){
+		console.log(url.indexOf('red'),11111)
+		var v = url.indexOf('red');
+	}
+	
+	let redno;
+
+	var getRed = function () {
+		redno = url.split('?')[1].split('=')[1];
+		red();
+		obj.t({ h: 3.2, fontsize: 0.2, color: 'rgb(233 204 0)' }, '');
+		obj2.onclick = function () {
+			const waitbg = obj.addwait('Red envelopes are being drawn, please wait.', false, true);
+			console.log(rn)
+			setTimeout(function () {
+				obj.ajax("/index/Index/getRedPackets.html", {
+					orderno: redno
+				}, function (e) {
+					obj.set(redopen);
+					const t = e.data;
+					obj.t({ h: 2.5, fontsize: 0.8, color: '#FFDF00' }, '₹' + t + '');
+					obj.delbg(waitbg);
+					obj2.onclick = function () {
+						obj.remove;
+						window.location = '/index/Index/user.html';
+					}
+				}, function (e) {
+					obj.set(redexit);
+					obj.delbg(waitbg);
+					obj.t({ h: 2.5, fontsize: 0.8, color: '#FFDF00' }, '');
+					obj2.onclick = obj.remove;
+					console.log(e);
+				})
+			}, rn)
+		}
+	}
+
+	if (v > 0) {
+		obj.imgload([
+			'https://delloss.oss-ap-south-1.aliyuncs.com/static/index/css/imgs/red/redopen1.png',
+			'https://delloss.oss-ap-south-1.aliyuncs.com/static/index/css/imgs/red/redopen2.png',
+			'https://delloss.oss-ap-south-1.aliyuncs.com/static/index/css/imgs/red/red.png',
+			'https://delloss.oss-ap-south-1.aliyuncs.com/static/index/css/imgs/red/bgeffect2.png',
+			'https://delloss.oss-ap-south-1.aliyuncs.com/static/index/css/imgs/red/light2.png'
+		], 3000, getRed)
+	}
+	function stay() {
+		return obj.addwait('Stay Tuned', 1500);
+	}
+</script>
+</body>
+
+</html>
